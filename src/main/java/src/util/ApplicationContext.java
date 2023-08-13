@@ -1,6 +1,8 @@
 package src.util;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import src.repository.impl.AddressRepositoryImpl;
 import src.repository.impl.EmployeeRepositoryImpl;
 import src.repository.impl.PhoneNumberRepositoryImpl;
@@ -10,7 +12,7 @@ import src.service.impl.PhoneNumberServiceImpl;
 
 public class ApplicationContext {
 
-
+private static EntityManagerFactory emf;
     private static EntityManager em;
 
     private static EmployeeRepositoryImpl employeeRepository;
@@ -25,7 +27,8 @@ public class ApplicationContext {
 
 
     static {
-        em = HibernateUtils.getEntityManagerFactory().createEntityManager();
+        emf = Persistence.createEntityManagerFactory("default");
+        em = emf.createEntityManager();
 
         employeeRepository = new EmployeeRepositoryImpl(em);
         employeeService = new EmployeeServiceImpl(employeeRepository);

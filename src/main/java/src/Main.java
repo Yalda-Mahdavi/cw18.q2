@@ -34,10 +34,11 @@ public class Main {
         employee.setAddresses(addresses);
 
         empService.save(employee);
+
+        System.out.println(empService.findEmployeesByPostalCode(198L));
+        System.out.println(empService.findEmployeesByTelNumber("021"));
+        System.out.println("Employees in Tehran: " + empService.findEmployeesByCity("Tehran"));
         empService.delete(empService.findById(1L));
 
-//        System.out.println(empService.findEmployeesByPostalCode(198L));
-//        System.out.println(empService.findEmployeesByTelNumber("021"));
-//        System.out.println("Employees in Tehran: " + empService.findEmployeesByCity("Tehran"));
     }
 }
