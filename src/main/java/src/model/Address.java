@@ -1,8 +1,8 @@
 package src.model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -25,7 +25,7 @@ public class Address {
     @ManyToOne
     private Employee employee;
 
-    @OneToMany (mappedBy = "address", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     private List<PhoneNumber> phoneNumbers;
 
     public Address(long postalCode, String postalAddress, String city, Employee employee, List<PhoneNumber> phoneNumbers) {
