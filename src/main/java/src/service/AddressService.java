@@ -1,4 +1,7 @@
 package src.service;
 
-public interface AddressService {
+import src.base.service.BaseService;
+import src.model.Address;
+
+public interface AddressService extends BaseService<Address, Long> {
 }

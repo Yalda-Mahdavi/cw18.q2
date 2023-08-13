@@ -1,11 +1,13 @@
 package src.service.impl;
 
-import src.repository.impl.PhoneNumberRepositoryImpl;
+import src.base.service.BaseServiceImpl;
+import src.model.PhoneNumber;
+import src.repository.PhoneNumberRepository;
+import src.service.PhoneNumberService;
 
-public class PhoneNumberServiceImpl {
-    private PhoneNumberRepositoryImpl phoneNumberRepository;
+public class PhoneNumberServiceImpl extends BaseServiceImpl<PhoneNumber, Long, PhoneNumberRepository> implements PhoneNumberService {
 
-    public PhoneNumberServiceImpl(PhoneNumberRepositoryImpl phoneNumberRepository) {
-        this.phoneNumberRepository = phoneNumberRepository;
+    public PhoneNumberServiceImpl(PhoneNumberRepository repository) {
+        super(repository);
     }
 }

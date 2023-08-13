@@ -11,7 +11,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class BaseServiceImpl <T extends BaseEntity<ID>, ID extends Serializable, R extends BaseRepository<T,ID>>
         implements BaseService<T, ID> {
-    private final R repository;
+    protected final R repository;
 
     @Override
     public void save(T entity) {

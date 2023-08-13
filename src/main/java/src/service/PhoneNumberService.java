@@ -1,4 +1,7 @@
 package src.service;
 
-public interface PhoneNumberService {
+import src.base.service.BaseService;
+import src.model.PhoneNumber;
+
+public interface PhoneNumberService extends BaseService<PhoneNumber, Long> {
 }

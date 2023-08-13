@@ -33,7 +33,7 @@ public class Main {
 
         employee.setAddresses(addresses);
 
-        empService.saveEmployee(employee);
+        empService.save(employee);
 //        empService.removeEmployee(empService.findEmployeeById(2L));
 
         System.out.println(empService.findEmployeesByPostalCode(198L));
