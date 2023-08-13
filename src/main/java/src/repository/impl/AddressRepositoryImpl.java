@@ -8,8 +8,8 @@ import src.repository.AddressRepository;
 public class AddressRepositoryImpl extends BaseRepositoryImpl<Address, Long> implements AddressRepository {
     private EntityManager em;
 
-    public AddressRepositoryImpl(EntityManager em) {
-        this.em = em;
+    public AddressRepositoryImpl(EntityManager entityManager) {
+        super(entityManager);
     }
 
     @Override

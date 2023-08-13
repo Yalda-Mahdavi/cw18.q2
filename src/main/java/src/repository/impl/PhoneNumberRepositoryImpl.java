@@ -9,7 +9,7 @@ public class PhoneNumberRepositoryImpl extends BaseRepositoryImpl<PhoneNumber, L
     private EntityManager entityManager;
 
     public PhoneNumberRepositoryImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
+        super(entityManager);
     }
 
     @Override

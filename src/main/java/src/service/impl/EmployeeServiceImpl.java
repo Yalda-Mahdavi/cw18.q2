@@ -14,21 +14,21 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee, Long, Employe
 
     @Override
     public Employee findEmployeesByPostalCode(long postalCode) {
-        return repository.findEmployeesByPostalCode(postalCode);
+        return getRepository().findEmployeesByPostalCode(postalCode);
     }
 
     @Override
     public Employee findEmployeesByTelNumber(String telNumber) {
-        return repository.findEmployeesByTelNumber(telNumber);
+        return getRepository().findEmployeesByTelNumber(telNumber);
     }
 
     @Override
     public List<Employee> findEmployeesByCity(String city) {
-        return repository.findEmployeesByCity(city);
+        return getRepository().findEmployeesByCity(city);
     }
 
     @Override
     public List<Employee> findEmployeesByMobNumber(String mobNumber) {
-        return repository.findEmployeesByMobNumber(mobNumber);
+        return getRepository().findEmployeesByMobNumber(mobNumber);
     }
 }

@@ -1,6 +1,7 @@
 package src.base.service;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import src.base.model.BaseEntity;
 import src.base.repository.BaseRepository;
 
@@ -9,9 +10,10 @@ import java.util.Collection;
 import java.util.Optional;
 
 @AllArgsConstructor
+@Getter
 public class BaseServiceImpl <T extends BaseEntity<ID>, ID extends Serializable, R extends BaseRepository<T,ID>>
         implements BaseService<T, ID> {
-    protected final R repository;
+    private final R repository;
 
     @Override
     public void save(T entity) {

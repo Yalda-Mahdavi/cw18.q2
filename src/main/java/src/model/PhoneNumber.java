@@ -20,7 +20,8 @@ public class PhoneNumber extends BaseEntity<Long> {
     @ManyToOne
     private Address address;
 
-    public PhoneNumber(Long id, String telNumber, String mobNumber, Address address) {super();
+    public PhoneNumber(Long id, String telNumber, String mobNumber, Address address) {
+        super(id);
         this.telNumber = telNumber;
         this.mobNumber = mobNumber;
         this.address = address;

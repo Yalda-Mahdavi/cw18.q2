@@ -1,6 +1,8 @@
 package src.base.repository;
 
 import jakarta.persistence.EntityManager;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import src.base.model.BaseEntity;
 import src.util.HibernateUtils;
 
@@ -9,8 +11,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+@AllArgsConstructor
+@Getter
 public abstract class BaseRepositoryImpl <T extends BaseEntity<ID>, ID extends Serializable> implements BaseRepository<T,ID>{
-   protected EntityManager em = HibernateUtils.getEntityManagerFactory().createEntityManager();
+   private EntityManager em = HibernateUtils.getEntityManagerFactory().createEntityManager();
 
     @Override
     public void save(T entity) {
