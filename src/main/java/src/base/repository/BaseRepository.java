@@ -1,6 +1,5 @@
 package src.base.repository;
 
-import jakarta.persistence.EntityManager;
 import src.base.model.BaseEntity;
 
 import java.io.Serializable;

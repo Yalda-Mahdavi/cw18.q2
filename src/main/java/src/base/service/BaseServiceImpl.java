@@ -14,11 +14,10 @@ import java.util.Optional;
 public class BaseServiceImpl <T extends BaseEntity<ID>, ID extends Serializable, R extends BaseRepository<T,ID>>
         implements BaseService<T, ID> {
     private final R repository;
-
     @Override
     public void save(T entity) {
         repository.beginTransaction();
-        repository.save(entity);
+        repository.update(entity);
         repository.commitTransaction();
     }
 

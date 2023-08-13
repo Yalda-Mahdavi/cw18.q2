@@ -13,8 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Getter
 public abstract class BaseRepositoryImpl <T extends BaseEntity<ID>, ID extends Serializable> implements BaseRepository<T,ID>{
-   private EntityManager em;
-
+    EntityManager em;
     @Override
     public void save(T entity) {
         em.persist(entity);
