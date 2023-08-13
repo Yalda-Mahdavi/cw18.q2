@@ -1,12 +1,12 @@
 package src.util;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class HibernateUtils {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
 
-    public static EntityManagerFactory getEmf (){
+    public static EntityManagerFactory getEntityManagerFactory() {
         return emf;
     }
 }
