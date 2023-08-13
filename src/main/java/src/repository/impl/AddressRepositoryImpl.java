@@ -1,11 +1,11 @@
 package src.repository.impl;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 public class AddressRepositoryImpl {
-    private EntityManager entityManager;
+    private EntityManager em;
 
-    public AddressRepositoryImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    public AddressRepositoryImpl(EntityManager em) {
+        this.em = em;
     }
-}
+    }
