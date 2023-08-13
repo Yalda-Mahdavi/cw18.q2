@@ -1,6 +1,6 @@
 package src.repository.impl;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 public class PhoneNumberRepositoryImpl {
     private EntityManager entityManager;
