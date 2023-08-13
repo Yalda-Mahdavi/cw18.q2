@@ -2,16 +2,13 @@ package src.base.repository;
 
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import src.base.model.BaseEntity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 @AllArgsConstructor
-@Getter
 public abstract class BaseRepositoryImpl <T extends BaseEntity<ID>, ID extends Serializable> implements BaseRepository<T,ID>{
     EntityManager em;
     @Override
@@ -30,8 +27,8 @@ public abstract class BaseRepositoryImpl <T extends BaseEntity<ID>, ID extends S
     }
 
     @Override
-    public Optional<T> findById(ID id) {
-        return Optional.ofNullable(em.find(getEntityClass(), id));
+    public T findById(ID id) {
+        return em.find(getEntityClass(), id);
     }
 
     @Override
@@ -62,6 +59,11 @@ public abstract class BaseRepositoryImpl <T extends BaseEntity<ID>, ID extends S
     public void rollBack() {
         if(em.getTransaction().isActive())
             em.getTransaction().rollback();
+    }
+
+    @Override
+    public EntityManager getEm() {
+        return em;
     }
 
     public T saveWithOutTransaction(T entity){

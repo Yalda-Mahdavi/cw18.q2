@@ -16,27 +16,39 @@ public class BaseServiceImpl <T extends BaseEntity<ID>, ID extends Serializable,
     private final R repository;
     @Override
     public void save(T entity) {
-        repository.beginTransaction();
-        repository.update(entity);
-        repository.commitTransaction();
+        try {
+            repository.beginTransaction();
+            repository.save(entity);
+            repository.commitTransaction();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public void update(T entity) {
-        repository.beginTransaction();
-        repository.update(entity);
-        repository.commitTransaction();
+        try {
+            repository.beginTransaction();
+            repository.update(entity);
+            repository.commitTransaction();
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
     public void delete(T entity) {
-        repository.beginTransaction();
-        repository.delete(entity);
-        repository.commitTransaction();
+       try {
+           repository.beginTransaction();
+           repository.delete(entity);
+           repository.commitTransaction();
+       }catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
     }
 
     @Override
-    public Optional<T> findById(ID id) {
+    public T findById(ID id) {
         return repository.findById(id);
     }
 
@@ -47,9 +59,14 @@ public class BaseServiceImpl <T extends BaseEntity<ID>, ID extends Serializable,
 
     @Override
     public Collection<T> saveAll(Collection<T> entityCollection) {
-        repository.beginTransaction();
-        Collection<T> saveList = repository.saveAll(entityCollection);
-        repository.commitTransaction();
+        Collection<T> saveList = null;
+        try {
+           repository.beginTransaction();
+           saveList = repository.saveAll(entityCollection);
+           repository.commitTransaction();
+       }catch (Exception e) {
+           System.out.println(e.getMessage());
+       }
         return saveList;
     }
 
