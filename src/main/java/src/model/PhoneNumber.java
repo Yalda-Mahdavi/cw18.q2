@@ -2,6 +2,7 @@ package src.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import src.base.model.BaseEntity;
 
 @Getter
 @Setter
@@ -11,10 +12,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "phone_number")
-public class PhoneNumber {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class PhoneNumber extends BaseEntity<Long> {
 
     private String telNumber;
     private String mobNumber;
@@ -22,7 +20,7 @@ public class PhoneNumber {
     @ManyToOne
     private Address address;
 
-    public PhoneNumber(String telNumber, String mobNumber, Address address) {
+    public PhoneNumber(Long id, String telNumber, String mobNumber, Address address) {super();
         this.telNumber = telNumber;
         this.mobNumber = mobNumber;
         this.address = address;
