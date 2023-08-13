@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
     public static void main( String[] args )
     {
-        EmployeeService empService = ApplicationContext.getEmpService();
+        EmployeeService empService = ApplicationContext.getEmployeeService();
         ApplicationContext.getAddressService();
         ApplicationContext.getPhoneNumService();
 
