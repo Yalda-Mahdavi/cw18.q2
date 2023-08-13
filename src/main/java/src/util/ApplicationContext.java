@@ -37,7 +37,7 @@ public class ApplicationContext {
         phoneNumberService = new PhoneNumberServiceImpl(phoneNumberRepository);
     }
 
-    public static EmployeeServiceImpl getEmpService() {
+    public static EmployeeServiceImpl getEmployeeService() {
         return employeeService;
     }
 
@@ -48,5 +48,4 @@ public class ApplicationContext {
     public static PhoneNumberServiceImpl getPhoneNumService() {
         return phoneNumberService;
     }
-
 }
