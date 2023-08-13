@@ -1,4 +1,7 @@
 package src.repository;
 
-public interface PhoneNumberRepository {
+import src.base.repository.BaseRepository;
+import src.model.PhoneNumber;
+
+public interface PhoneNumberRepository extends BaseRepository<PhoneNumber, Long> {
 }

@@ -1,14 +1,11 @@
 package src.repository;
 
+import src.base.repository.BaseRepository;
 import src.model.Employee;
 
 import java.util.List;
 
-public interface EmployeeRepository {
-    void save(Employee employee);
-    void update(Employee employee);
-    void remove(Employee employee);
-    Employee findById(Long id);
+public interface EmployeeRepository extends BaseRepository<Employee, Long> {
     Employee findEmployeesByPostalCode(long postalCode);
     Employee findEmployeesByTelNumber(String telNumber);
     List<Employee> findEmployeesByCity(String city);

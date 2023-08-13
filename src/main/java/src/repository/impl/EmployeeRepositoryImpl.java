@@ -6,6 +6,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Root;
+import src.base.repository.BaseRepositoryImpl;
 import src.model.Address;
 import src.model.Employee;
 import src.model.PhoneNumber;
@@ -13,7 +14,7 @@ import src.repository.EmployeeRepository;
 
 import java.util.List;
 
-public class EmployeeRepositoryImpl implements EmployeeRepository {
+public class EmployeeRepositoryImpl extends BaseRepositoryImpl<Employee, Long> implements EmployeeRepository {
     private EntityManager em;
 
     public EmployeeRepositoryImpl(EntityManager em) {
@@ -23,27 +24,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     public EntityManager getEm() {
         return em;
     }
-
-    @Override
-    public void save(Employee employee) {
-        em.persist(employee);
-    }
-
-    @Override
-    public void update(Employee employee) {
-        em.merge(employee);
-    }
-
-    @Override
-    public void remove(Employee employee) {
-        em.remove(employee);
-    }
-
-    @Override
-    public Employee findById(Long id) {
-        return em.find(Employee.class, id);
-    }
-
     @Override
     public Employee findEmployeesByPostalCode(long postalCode) {
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -97,5 +77,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         criteriaQuery.where(criteriaBuilder.like(joinPhoneNumber.<String>get("mobNumber"), "0912%"));
         TypedQuery<Employee> query = em.createQuery(criteriaQuery);
         return query.getResultList();
+    }
+
+    @Override
+    public Class<Employee> getEntityClass() {
+        return Employee.class;
     }
 }
