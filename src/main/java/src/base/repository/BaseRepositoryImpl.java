@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-
 public abstract class BaseRepositoryImpl <T extends BaseEntity<ID>, ID extends Serializable> implements BaseRepository<T,ID>{
-   protected EntityManager em;
+   private EntityManager em;
 
     @Override
     public void save(T entity) {
@@ -43,6 +42,25 @@ public abstract class BaseRepositoryImpl <T extends BaseEntity<ID>, ID extends S
         entityCollection.forEach(e->saveEntity.add(saveWithOutTransaction(e)));
         return saveEntity;
     }
+
+    @Override
+    public void beginTransaction() {
+        if(!em.getTransaction().isActive())
+            em.getTransaction().begin();
+    }
+
+    @Override
+    public void commitTransaction() {
+        if(em.getTransaction().isActive())
+            em.getTransaction().commit();
+    }
+
+    @Override
+    public void rollBack() {
+        if(em.getTransaction().isActive())
+            em.getTransaction().rollback();
+    }
+
     public T saveWithOutTransaction(T entity){
         if(entity.getId() == null)
             em.persist(entity);
